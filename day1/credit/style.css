@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+/* Header */
+header {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navbar */
+nav {
+    width: 100%;
+    background: #333;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f0a500;
+}
+
+nav ol {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ol li {
+    margin: 0 15px;
+}
+
+nav ol li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav ol li a:hover {
+    color: #f0a500;
+}
+/* Kredi Kartı Bölümü */
+.card-container {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.credit-card {
+    width: 350px;
+    height: 200px;
+    background: linear-gradient(135deg, #000000, #333333);
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease-in-out;
+}
+
+.credit-card:hover {
+    transform: scale(1.05);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chip {
+    width: 50px;
+    filter: brightness(0.8);
+}
+
+.brand {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ccc;
+}
+
+.card-number {
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.card-holder p, .expiry p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #ccc;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    background: #222;
+    font-size: 14px;
+}
