@@ -53,3 +53,39 @@ body {
     right: 10px;
     color: white;
 }
+
+.block {
+    display: block;
+    background-color: lightblue;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.inline {
+    display: inline;
+    background-color: lightgreen;
+    padding: 5px;
+}
+
+.inline-block {
+    display: inline-block;
+    background-color: orange;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.none {
+    display: none;
+}
+
+.flex-container {
+    display: flex;
+    gap: 10px;
+}
+.flex-item {
+    background-color: red;
+    padding: 10px;
+    color: white;
+}
