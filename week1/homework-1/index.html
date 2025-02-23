@@ -7,24 +7,28 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <link
-    rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
   />
   <body>
+    <!-- Main container -->
     <div class="container">
-      <div class="background"></div>
-      <video class="background-video" autoplay unmuted loop>
-        <source src="images/After Life _ Official Trailer [HD] _ Netflix.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <!-- Hamburger menu for mobile navigation -->
       <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox" />
       <label for="menu-toggle" class="menu-toggle">&#9776;</label>
-
-      <div class="nav">
+      <!-- Navigation bar -->
+      <div class="navbar">
         <ul>
-          <li><a href="#"> Home</a></li>
-          <li><a href="#"> Favourite Scene</a></li>
-          <li><a href="#"> Episodes</a></li>
+          <li><a href="#home"> Home</a></li>
+          <li><a href="#casts"> Casts</a></li>
+          <li><a href="#favorite-scene"> Favorite Scene</a></li>
           <li>
             <a href="#">
               <span class="material-symbols-outlined">account_circle</span></a
@@ -32,21 +36,19 @@
           </li>
         </ul>
       </div>
-      <div class="banner-contents">
+      <div id="home" class="banner-contents">
         <h1 class="banner-title">After Life</h1>
         <div class="banner-buttons">
-          <a href="https://www.imdb.com/title/tt8398600/" target="_blank"
-            ><button class="banner-button">IMDB</button></a
-          >
-          <button class="banner-button">Mark as Favorite</button>
+          <a href="https://www.imdb.com/title/tt8398600/" target="_blank">
+            <button class="banner-button">IMDB</button>
+          </a>
+          <a href="#popupModal" class="banner-button">Episodes</a>
         </div>
         <div class="banner-description">
           After Life is a British dark comedy-drama about Tony, a man who
           becomes bitter and reckless after his wife's death. As he struggles
           with grief, his friends try to help him find meaning in life again.
         </div>
-        <a href="#popupModal" class="banner-button">Watch</a>
-
         <div id="popupModal" class="modal">
           <div class="modal-content">
             <a href="#" class="close">&times;</a>
@@ -121,7 +123,8 @@
         </div>
       </div>
     </div>
-    <div class="test">
+    <!-- Cast Section -->
+    <div id="casts" class="cast-container">
       <div class="cast-header">
         <h1>Cast</h1>
       </div>
@@ -170,5 +173,54 @@
         </div>
       </div>
     </div>
+    <!-- Favorite Scene Section -->
+    <section id="favorite-scene" class="favorite-section">
+      <h1 class="section-title">Favorite Scene</h1>
+      <div class="favorite-content">
+        <div class="favorite-media">
+          <iframe
+            src="images/After Life _ Official Trailer [HD] _ Netflix.mp4"
+            title="After Life Trailer"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="favorite-info">
+          <p class="favorite-description">
+            The most beloved episode of After Life is often considered to be
+            Season 3, Episode 6. In this emotional final episode, Tony begins to
+            heal from his grief over the loss of his wife, Lisa. He starts to
+            find meaning in life again and becomes more empathetic toward those
+            around him. The episode highlights his personal growth and the
+            realization that even after loss, there is hope and meaning to be
+            found in everyday moments. It's a touching reminder of the value of
+            life, relationships, and self-rediscovery.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Zeynep Ermis. All Rights Reserved.</p>
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/zeynepermis"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/ZeynepErmis"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
