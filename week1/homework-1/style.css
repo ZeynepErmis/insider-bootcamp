@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  background: url("images/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  object-fit: contain;
+  color: #fff;
+  height: 100vh;
+}
+
+.background {
+  height: 100%;
+}
+
+/* Video başlangıçta gizli olacak */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0; /* Başlangıçta video görünmez */
+  transition: opacity 1s ease 3s; /* 3 saniye sonra opaklığı artır */
+}
+
+/* 3 saniye sonra arka plan kaybolacak ve video görünecek */
+.container:hover .background {
+  opacity: 0; /* Arka planın görünürlüğü kaybolur */
+}
+
+.container:hover .background-video {
+  opacity: 1; /* Video görünür olur */
+}
+
+
+
+.banner-contents {
+  position: absolute;
+  top: 0px;
+  margin-left: 30px;
+ padding-top: 250px;
+  height: 700px;
+  max-width: 415px;
+} 
+
+.banner-title {
+  font-size: 3rem;
+  font-weight: 800;
+  padding-bottom: 0.3rem;
+}
+
+.banner-description {
+  line-height: 1.3;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1rem;
+  max-width: 400px;
+}
+
+.banner-button {
+  cursor: pointer;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.5vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+}
+
+.banner-button:hover {
+  color: #000;
+  background-color: #e6e6e6;
+  transition: all 0.2s;
+}
+
+.nav {
+  position: absolute;
+  top: 15px;
+  right: 16px;
+  z-index: 2;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+/* Checkbox gizli olmalı */
+.menu-toggle-checkbox {
+  display: none;
+}
+
+/* Hamburger menü */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  z-index: 3;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.flex-container {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  z-index: 3;
+}
+
+.buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+.buttons {
+  display: flex;
+  justify-content: end;
+}
+/* Modal başlangıçta gizli */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* `:target` seçicisi ile modal açılır */
+.modal:target {
+  display: flex;
+}
+
+/* İçerik kutusu */
+.modal-content {
+  max-height: 60vh; /* Ekranın %80'i kadar yükseklik sınırı */
+  overflow-y: auto; /* Dikey scroll ekler */
+  background-color: rgba(52, 52, 52, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  width: 95%;
+  text-align: center;
+  -ms-overflow-style: none; /* IE ve Edge için */
+  scrollbar-width: none; /* Firefox için */
+}
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Kapatma butonu */
+.close {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  font-size: 24px;
+  text-decoration: none;
+  color: #e6e6e6;
+}
+
+/* İçerideki divleri düzenleyen flex container */
+.content-wrapper {
+  display: flex;
+  gap: 10px; /* Divler arasında boşluk */
+  margin-top: 20px;
+}
+
+.content-wrapper img {
+  width: 175px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+/* İlk div (%30 genişlik) */
+.content-wrapper > div:first-child {
+  width: 30%;
+  height: 100px;
+}
+
+/* İkinci div (%70 genişlik) */
+.content-wrapper > div:last-child {
+  width: 70%;
+  height: 100px;
+  padding: 10px;
+  text-align: left;
+  align-items: center;
+}
+
+.paragraph-style {
+  font-size: 10px;
+  font-weight: lighter;
+}
+
+.test {
+  background-color: rgba(52, 52, 52, 0.5);
+}
+
+.card-container {
+  display: flex;
+  justify-content: center; /* Kartları yatayda ortalar */
+  flex-wrap: wrap; /* Kartlar fazla olursa alt satıra geçer */
+  margin-top: 10px;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  border-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  position: relative; /* İçeriği resmin üzerine yerleştirebilmek için */
+}
+
+.card img {
+  width: 200px;
+  height: 100%; /* Resmin yüksekliği sabit */
+  transition: 0.3s ease;
+}
+
+.card-content {
+  display: none;
+  position: absolute; /* İçeriği resmin üstüne yerleştir */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Yarı saydam arka plan */
+  color: #fff;
+  padding: 16px;
+  box-sizing: border-box;
+  z-index: 1; /* İçeriğin üstte olmasını sağlar */
+}
+
+.card-content h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.card:hover .card-content {
+  display: block;
+}
+/* Cast başlığı */
+.cast-header {
+  text-align: center; /* Başlığı ortalar */
+}
+
+.cast-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+/* Başlık altına şık bir çizgi ekler */
+.cast-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.6); /* Başlık altındaki çizgi için renk */
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  /* Hamburger menü mobilde görünsün */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Menü başlangıçta gizli */
+  .nav {
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(51, 51, 51, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    z-index: 2;
+  }
+
+  /* Checkbox tıklandığında menüyü aç */
+  .menu-toggle-checkbox:checked ~ .nav {
+    display: block;
+  }
+
+  .nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 0px;
+  }
+
+  .nav ul li {
+    padding: 5px;
+    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+  }
+
+  .nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+    font-weight: 700;
+  }
+
+  /* Hover efekti - arka plan rengini biraz aç */
+  .nav ul li:hover {
+    background: rgba(230, 230, 230, 0.5); /* Daha açık bir mavi tonu */
+    transform: scale(1.05); /* Hafif büyüme efekti */
+    color: #000;
+  }
+
+  .nav ul li a:hover {
+    color: #000;
+  }
+}
