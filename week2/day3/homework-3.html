@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #countdown {
+            font-size: 2em;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown Timer</h1>
+    <input type="number" id="timeInput" placeholder="Enter seconds" min="1">
+    <button id="startButton">Start</button>
+    <button id="resetButton">Reset</button>
+    <p id="countdown">Enter a time and start</p>
+
+    <script>
+        let countdown;
+        let timeLeft;
+        
+        document.getElementById('startButton').addEventListener('click', function() {
+            clearInterval(countdown);
+            timeLeft = parseInt(document.getElementById('timeInput').value);
+            if (isNaN(timeLeft) || timeLeft <= 0) {
+                alert("Please enter a valid time!");
+                return;
+            }
+            
+            document.getElementById('countdown').textContent = timeLeft;
+            countdown = setInterval(() => {
+                timeLeft--;
+                document.getElementById('countdown').textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    document.getElementById('countdown').textContent = "Time's up!";
+                }
+            }, 1000);
+        });
+
+        document.getElementById('resetButton').addEventListener('click', function() {
+            clearInterval(countdown);
+            document.getElementById('countdown').textContent = "Enter a time and start";
+            document.getElementById('timeInput').value = "";
+        });
+    </script>
+</body>
+</html>
