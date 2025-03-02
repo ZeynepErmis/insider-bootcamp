@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar Section: Displays the task list -->
+      <section class="sidebar">
+        <h2 class="sidebar-title">To-Do List</h2>
+        <button id="show-completed">Show Only Completed</button>
+        <!-- Yeni buton -->
+        <ul id="task-list"></ul>
+        <!-- Task list will be dynamically updated here -->
+      </section>
+
+      <!-- Main Content Section: Form for adding new tasks -->
+      <div class="task-content">
+        <section id="task-form-section">
+          <h1 id="task-content-title">Add a New Task</h1>
+          <form id="taskForm">
+            <!-- Input field for task title -->
+            <input
+              type="text"
+              id="task-input"
+              class="task-input"
+              placeholder="Task Title"
+              maxlength="15"
+              required
+            />
+
+            <!-- Textarea for task description -->
+            <textarea
+              id="task-description"
+              class="task-textarea"
+              placeholder="Task Description"
+            ></textarea>
+
+            <!-- Due Date Section -->
+            <section class="task-due-date-section">
+              <h3 class="due-date-title">Due Date</h3>
+              <input
+                type="date"
+                id="task-due-date"
+                class="task-due-date"
+                required
+              />
+            </section>
+
+            <!-- Task Priority Section -->
+            <section class="task-priority-section">
+              <h3 class="priority-title">Priority</h3>
+              <!-- Priority options: Low, Medium, High -->
+              <label class="priority-option"
+                ><input
+                  type="radio"
+                  name="task-priority"
+                  value="Low"
+                />Low</label
+              >
+              <label class="priority-option"
+                ><input
+                  type="radio"
+                  name="task-priority"
+                  value="Medium"
+                />Medium</label
+              >
+              <label class="priority-option"
+                ><input
+                  type="radio"
+                  name="task-priority"
+                  value="High"
+                />High</label
+              >
+            </section>
+
+            <!-- Button to add a new task -->
+            <div class="button-container">
+              <button id="add-task-button" class="add-task-button">
+                + Add Task
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <!-- Task Details Section (Initially hidden, shown when a task is selected) -->
+      <div id="task-details" style="display: none">
+        <div class="button-container">
+          <button id="back-to-task-list">Back</button>
+        </div>
+        <!-- Task details will be displayed here -->
+        <div id="task-detail-info"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,323 @@
+/* Importing Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+/* Resetting default margin, padding, and box-sizing for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main container using flexbox to align sidebar and main content */
+.container {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* Sidebar styling */
+.sidebar {
+  min-width: 300px;
+  background-color: #504b38;
+  color: #f8f3d9;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Sidebar title spacing */
+.sidebar-title {
+  margin-bottom: 20px;
+}
+
+/* Show completed button styling */
+#show-completed {
+  font-weight: bold;
+  cursor: pointer;
+  color: #f8f3d9;
+  border: none;
+  border-radius: 7px;
+  background-color: #b9b28a;
+  padding: 1rem 5rem;
+}
+
+/* Show completed button hover effect */
+#show-completed:hover {
+  background-color: #a8a073;
+  transform: scale(1.05);
+}
+
+/* Task list item styling */
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+/* Completed tasks styling */
+li.complete {
+  text-decoration: line-through !important;
+  color: grey;
+}
+
+/* Buttons inside task items */
+li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+/* Check button default color */
+li button.fa-check {
+  color: #f8f3d9;
+}
+
+/* Completed task check button color */
+li button.fa-check.completed {
+  color: green;
+}
+
+/* Trash button default color */
+li button.fa-trash {
+  color: #f8f3d9;
+}
+
+/* Trash button hover effect */
+li button.fa-trash:hover {
+  color: red;
+}
+
+/* Positioning check icon inside list item */
+li .fa-check {
+  position: absolute;
+  right: 40px;
+}
+
+/* Positioning trash icon inside list item */
+li .fa-trash {
+  position: absolute;
+  right: 10px;
+}
+
+/* Main content area styling */
+.task-content {
+  flex-grow: 1;
+  padding: 20px;
+  color: #504b38;
+}
+
+/* Task form section title */
+#task-content-title {
+  margin-bottom: 20px;
+}
+
+/* Input and textarea styles for task form */
+.task-input,
+.task-textarea {
+  border-radius: 10px;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 1rem;
+}
+
+/* Task description textarea size */
+.task-textarea {
+  height: 100px;
+}
+
+/* Due date section title spacing */
+.due-date-title {
+  margin-bottom: 10px;
+}
+
+/* Due date section spacing */
+.task-due-date-section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* Due date input styling */
+.task-due-date {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Priority selection section spacing */
+.task-priority-section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Button container alignment */
+.button-container {
+  display: flex;
+  justify-content: end;
+}
+
+/* Add task button styling */
+.add-task-button {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+  cursor: pointer;
+  color: #f8f3d9;
+  border: none;
+  border-radius: 7px;
+  background-color: #b9b28a;
+  padding: 1rem 5rem;
+}
+
+/* Add task button hover effect */
+.add-task-button:hover {
+  background-color: #a8a073;
+  transform: scale(1.05);
+}
+
+/* Priority option styling */
+.priority-option {
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #504b38;
+}
+
+/* Priority section title spacing */
+.priority-title {
+  margin-bottom: 10px;
+}
+
+/* Custom radio button styling for priority selection */
+.priority-option input[type="radio"] {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #b9b28a;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+  background-color: #f8f3d9;
+}
+
+/* Selected radio button effect */
+.priority-option input[type="radio"]:checked {
+  background-color: #b9b28a;
+  border-color: #a8a073;
+  box-shadow: 0 0 0 4px rgba(184, 178, 138, 0.3);
+}
+
+/* Task details section styling */
+#task-details {
+  background-color: #f8f3d9; /* Light beige background for task details */
+  padding: 20px;
+  flex-grow: 1;
+  color: #504b38;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  max-width: 80%;
+  height: 50%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Task details title */
+#task-detail-info h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #504b38;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Task details paragraphs */
+#task-detail-info p {
+  font-size: 16px;
+  color: #6c6755;
+  margin-bottom: 15px;
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Strong text styling in task details */
+#task-detail-info strong {
+  font-weight: 600;
+  color: #403d30;
+}
+
+/* Back button styling */
+#back-to-task-list {
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  background-color: #b9b28a;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Back button hover effect */
+#back-to-task-list:hover {
+  background-color: #a8a073;
+  transform: scale(1.05);
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: 0;
+  }
+
+  #show-completed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .task-content {
+    width: 100%;
+  }
+
+  #task-details {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  #task-detail-info {
+    padding: 0px;
+  }
+
+  /* Task form input fields adjustment for smaller screens */
+  .task-input,
+  .task-textarea,
+  .task-due-date {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .add-task-button {
+    padding: 1rem;
+  }
+}
