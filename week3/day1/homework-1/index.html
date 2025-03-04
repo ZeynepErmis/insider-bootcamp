@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Data</title>
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- External CSS File -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Convert to JSON</h2>
+
+      <!-- Form section for input fields -->
+      <div class="form-section">
+        <input
+          type="text"
+          id="studentName"
+          placeholder="Student Name"
+          required
+        />
+        <input type="text" id="lecture" placeholder="Lecture" required />
+        <input
+          type="text"
+          id="lectureHall"
+          placeholder="Lecture Hall"
+          required
+        />
+        <!-- Button to add student data -->
+        <button class="addStudent">Add Student</button>
+      </div>
+
+      <!-- Table section to display student data -->
+      <div class="table-section">
+        <h2>JSON Data Table View</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Lecture</th>
+              <th>Lecture Hall</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="studentTable"></tbody>
+          <!-- Dynamic table rows will be added here -->
+        </table>
+      </div>
+    </div>
+
+    <!-- External JavaScript File -->
+    <script src="script.js"></script>
+  </body>
+</html>

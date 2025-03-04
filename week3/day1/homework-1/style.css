@@ -1,0 +1,116 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  
+  /* Container */
+  .container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    width: 400px;
+    text-align: center;
+  }
+  
+  /* Form Section */
+  .form-section {
+    margin-bottom: 20px;
+  }
+  
+  /* Input Fields */
+  input {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Input Hover & Focus Effect */
+  input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+  }
+  
+  /* Add Student Button */
+  .addStudent {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Button Hover Effect */
+  .addStudent:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 91, 187, 0.3);
+  }
+  
+  /* Table Section */
+  .table-section {
+    margin-top: 20px;
+  }
+  
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  /* Table Headers & Cells */
+  th,
+  td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  /* Table Header Styling */
+  th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Row Hover Effect */
+  tr:hover {
+    background-color: #f1f1f1;
+    transition: 0.2s;
+  }
+  
+  /* Change Row Color When Clicked */
+  .selected-row {
+    background-color: #cce5ff !important;
+  }
+  
+  /* Delete Button */
+  .delete-btn {
+    cursor: pointer;
+    font-size: 18px;
+    color: red;
+    transition: 0.2s;
+  }
+  
+  /* Delete Button Hover Effect */
+  .delete-btn:hover {
+    color: darkred;
+  }
+  
