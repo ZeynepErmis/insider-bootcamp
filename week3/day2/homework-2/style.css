@@ -1,0 +1,22 @@
+body {
+  text-align: center;
+  margin: 20px;
+}
+
+#postContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+.post {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background: #f9f9f9;
+}
+#loading {
+  font-weight: bold;
+  color: #555;
+  display: none;
+}
