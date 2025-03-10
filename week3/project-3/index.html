@@ -3,13 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="logo.png" type="image/png" />
     <link rel="stylesheet" href="style.css" />
-    <head>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      />
-    </head>
+
+    <!-- FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Slick Slider CSS -->
     <link
       rel="stylesheet"
       type="text/css"
@@ -21,24 +24,27 @@
       href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"
     />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Fancybox CSS for image popups -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
     />
 
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Fancybox JS for image popups -->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+
+    <!-- Slick Slider JS -->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
 
-    <title>Demo e-commerce website</title>
+    <title>ecomini</title>
   </head>
   <body>
+    <!-- Navigation bar -->
     <nav class="navbar">
-      <div class="logo">e-commerce</div>
+      <div class="logo">ecomini</div>
       <div class="search-bar">
         <input
           type="text"
@@ -46,30 +52,64 @@
           placeholder="search on the website"
         />
         <button><i class="fas fa-search"></i></button>
+        <!-- Dropdown list for search results -->
         <ul id="search-results" class="dropdown-list"></ul>
       </div>
       <div class="nav-icons">
+        <!-- Favourites link -->
         <a href="#" class="fav-icon">
           <i class="far fa-heart"></i> Favourites
         </a>
-        <a href="#" class="cart-icon"
-          ><i class="fas fa-shopping-cart"></i> <span>Cart</span>
+        <!-- Shopping cart link -->
+        <a href="#" class="cart-icon">
+          <i class="fas fa-shopping-cart"></i> <span>Cart</span>
+          <!-- Cart dropdown container -->
           <div id="cart" class="cart-dropdown"></div>
         </a>
       </div>
     </nav>
+
     <div class="container">
+      <!-- Product slider section -->
       <section class="product-slider-container">
         <div id="productSlider" class="product-slider"></div>
       </section>
+
+      <h2>Products</h2>
+
+      <!-- Product listing section -->
       <section class="all-products-container">
-        <h2>Products</h2>
         <div id="productList" class="product-container"></div>
       </section>
     </div>
+
+    <!-- Notification popup for product addition -->
     <div id="notification" style="display: none">
       Product added successfully
     </div>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <p>&copy; ecomini. All Rights Reserved.</p>
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/zeynepermis"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/ZeynepErmis"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- External JavaScript file -->
     <script src="script.js"></script>
   </body>
 </html>

@@ -215,16 +215,18 @@ $(document).ready(function () {
           <p class="product-price">${product.price}$</p>
           
           <div class="product-actions">
+          <div class="left-actions">
             <button class="favorite-btn">
               <i class="fa-regular fa-heart heart-icon"></i>
             </button>
             <button class="add-to-cart">
               <i class="fa-solid fa-cart-shopping"></i>
             </button>
-            <button class="view-details" data-fancybox data-src="#modal-${product.id}" href="javascript:;">
-              <i class="fa-solid fa-eye"></i>
-            </button>
           </div>
+          <button class="view-details" data-fancybox data-src="#modal-${product.id}" href="javascript:;">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
         </div>
         
         <!-- Modal Content -->
@@ -274,6 +276,7 @@ $(document).ready(function () {
       },
     },
   });
+
   /**
    * Adds a hover effect to product cards by scaling them on mouse enter and resetting on mouse leave.
    */
@@ -339,20 +342,20 @@ $(document).ready(function () {
 
       // Replace the cloned product's inner HTML with a new cart item structure
       clonedProduct.html(`
-      <img src="${productCard.find("img").attr("src")}" alt="">
-      <div class="cart-item-info">
-        <h4>${productCard.find("h3").text()}</h4>
-        <p>${productCard.find("p").text()}</p>
-      </div>
-      <div class="cart-actions">
-        <div class="quantity-controls">
-          <button class="decrease"><i class="fa-solid fa-minus"></i></button>
-          <span class="quantity">1</span>
-          <button class="increase"><i class="fa-solid fa-plus"></i></button>
+        <img src="${productCard.find("img").attr("src")}" alt="">
+        <div class="cart-item-info">
+          <h4>${productCard.find("h3").text()}</h4>
+          <p>${productCard.find("p").text()}</p>
         </div>
-        <button class="removeFromCartBtn"><i class="fa-solid fa-trash"></i></button>
-      </div>
-    `);
+        <div class="cart-actions">
+          <div class="quantity-controls">
+            <button class="decrease"><i class="fa-solid fa-minus"></i></button>
+            <span class="quantity">1</span>
+            <button class="increase"><i class="fa-solid fa-plus"></i></button>
+          </div>
+          <button class="removeFromCartBtn"><i class="fa-solid fa-trash"></i></button>
+        </div>
+  `);
       $("#cart").append(clonedProduct);
     }
     // Update local storage after modifying the cart
@@ -370,7 +373,7 @@ $(document).ready(function () {
         <span class="icon">✔️</span>
         <span class="message">Product added to the chart</span>
       </div>
-    `;
+  `;
 
     $("body").append(notification);
 
@@ -511,106 +514,127 @@ $(document).ready(function () {
     }
   }
 
-
-
-
-
-
-
-
-
-
-  $(document).ready(function () {
-    // Modalı HTML'e dinamik olarak ekle
-    $("body").append(`
-      <div id="favorites-modal" class="modal" style="display: none;">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-          <h2>Favourite Products</h2>
-          <div class="favorites-list"></div> <!-- Dinamik olarak doldurulacak -->
-          <button id="close-favorites">Close</button>
-        </div>
+  $("body").append(`
+    <div id="favorites-modal" class="fav-modal" style="display: none;">
+      <div class="fav-modal-overlay"></div>
+      <div class="fav-modal-content">
+        <h2>Favourite Products</h2>
+        <div class="favorites-list"></div> <!-- Dinamik olarak doldurulacak -->
+        <button id="close-favorites">Close</button>
       </div>
-    `);
+    </div>
+  `);
+});
 
-    updateFavCount();
-  });
+/**
+ * Retrieves favorite products from localStorage.
+ * If no favorites exist, returns an empty array.
+ * @returns {Array} List of favorite products.
+ */
+function getFavorites() {
+  let favorites = localStorage.getItem("favorites");
+  return favorites ? JSON.parse(favorites) : [];
+}
 
-  // Favori ürünleri localStorage'dan al
-  function getFavorites() {
-    return JSON.parse(localStorage.getItem("favorites")) || [];
+/**
+ * Saves the given favorite products list to localStorage.
+ * @param {Array} favorites - List of favorite products to be saved.
+ */
+function saveFavorites(favorites) {
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+/**
+ * Initializes favorite products on page load.
+ * Checks all product cards and updates their heart icons
+ * based on whether they are in the favorites list.
+ */
+let favorites = getFavorites();
+
+$(".product-card").each(function () {
+  let productId = $(this).data("id");
+  let heartIcon = $(this).find(".favorite-btn .heart-icon");
+
+  if (favorites.find((p) => p.id == productId)) {
+    heartIcon.addClass("fas").removeClass("far");
+  } else {
+    heartIcon.removeClass("fas").addClass("far");
+  }
+});
+
+/**
+ * Handles adding/removing products from favorites when the heart button is clicked.
+ * Updates the heart icon accordingly and saves changes to localStorage.
+ */
+$(document).on("click", ".favorite-btn", function () {
+  let productCard = $(this).closest(".product-card");
+  let productId = productCard.data("id");
+  let productTitle = productCard.find(".product-title").text();
+  let productImage = productCard.find("img").attr("src");
+  let productPrice = productCard.find(".product-price").text();
+
+  let favorites = getFavorites();
+  let index = favorites.findIndex((p) => p.id == productId);
+
+  if (index === -1) {
+    favorites.push({
+      id: productId,
+      title: productTitle,
+      image: productImage,
+      price: productPrice,
+    });
+    $(this).find(".heart-icon").addClass("fas").removeClass("far"); // Favoriye ekle
+  } else {
+    favorites.splice(index, 1); // Favoriden çıkar
+    $(this).find(".heart-icon").removeClass("fas").addClass("far"); // Favoriden çıkar
   }
 
-  // Favori ürünleri localStorage'a kaydet
-  function saveFavorites(favorites) {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    updateFavCount();
+  saveFavorites(favorites);
+});
+
+/**
+ * Opens the favorites modal and displays the favorite products.
+ * If no favorites exist, shows a message.
+ */
+$(document).on("click", ".fav-icon", function (e) {
+  e.preventDefault();
+  let favorites = getFavorites();
+  let favoritesHtml = "";
+
+  if (favorites.length === 0) {
+    favoritesHtml = "<p>No favourite products added.</p>";
+  } else {
+    favorites.forEach((product) => {
+      favoritesHtml += `
+        <div class="favorite-item" data-id="${product.id}">
+          <img src="${product.image}" alt="${product.title}" width="50">
+          <span>${product.title}</span>
+          <span>${product.price}</span>
+          <button class="remove-favorite"><i class="fas fa-trash"></i></button>
+        </div>
+      `;
+    });
   }
 
+  $(".favorites-list").html(favoritesHtml);
+  $("#favorites-modal").fadeIn();
+});
 
-  // Favorilere ekle/çıkar
-  $(document).on("click", ".favorite-btn", function () {
-    let productCard = $(this).closest(".product-card");
-    let productId = productCard.data("id");
-    let productTitle = productCard.find(".product-title").text();
-    let productImage = productCard.find("img").attr("src");
-    let productPrice = productCard.find(".product-price").text();
+/**
+ * Closes the favorites modal when the close button or overlay is clicked.
+ */
+$(document).on("click", "#close-favorites, .fav-modal-overlay", function () {
+  $("#favorites-modal").fadeOut();
+});
 
-    let favorites = getFavorites();
-    let index = favorites.findIndex((p) => p.id == productId);
-
-    if (index === -1) {
-      favorites.push({
-        id: productId,
-        title: productTitle,
-        image: productImage,
-        price: productPrice,
-      });
-      $(this).find(".heart-icon").addClass("fas").removeClass("far");
-    } else {
-      favorites.splice(index, 1);
-      $(this).find(".heart-icon").removeClass("fas").addClass("far");
-    }
-
-    saveFavorites(favorites);
-  });
-
-  // Favoriler modalını açma
-  $(document).on("click", ".fav-icon", function (e) {
-    e.preventDefault();
-    let favorites = getFavorites();
-    let favoritesHtml = "";
-
-    if (favorites.length === 0) {
-      favoritesHtml = "<p>No favourite products added.</p>";
-    } else {
-      favorites.forEach((product) => {
-        favoritesHtml += `
-          <div class="favorite-item" data-id="${product.id}">
-            <img src="${product.image}" alt="${product.title}" width="50">
-            <span>${product.title}</span>
-            <span>${product.price}</span>
-            <button class="remove-favorite">Remove</button>
-          </div>
-        `;
-      });
-    }
-
-    $(".favorites-list").html(favoritesHtml);
-    $("#favorites-modal").fadeIn();
-  });
-
-  // Favoriler modalını kapatma
-  $(document).on("click", "#close-favorites, .modal-overlay", function () {
-    $("#favorites-modal").fadeOut();
-  });
-
-  // Favorilerden ürün çıkarma
-  $(document).on("click", ".remove-favorite", function () {
-    let productId = $(this).closest(".favorite-item").data("id");
-    let favorites = getFavorites();
-    favorites = favorites.filter((p) => p.id != productId);
-    saveFavorites(favorites);
-    $(this).closest(".favorite-item").remove();
-  });
+/**
+ * Removes a product from the favorites list when the trash icon is clicked.
+ * Updates localStorage and removes the item from the DOM.
+ */
+$(document).on("click", ".remove-favorite", function () {
+  let productId = $(this).closest(".favorite-item").data("id");
+  let favorites = getFavorites();
+  favorites = favorites.filter((product) => product.id != productId);
+  saveFavorites(favorites);
+  $(this).closest(".favorite-item").remove();
 });
