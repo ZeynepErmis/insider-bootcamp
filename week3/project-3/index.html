@@ -26,46 +26,49 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <link
-      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
     />
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
 
     <title>Demo e-commerce website</title>
   </head>
   <body>
+    <nav class="navbar">
+      <div class="logo">e-commerce</div>
+      <div class="search-bar">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="search on the website"
+        />
+        <button><i class="fas fa-search"></i></button>
+        <ul id="search-results" class="dropdown-list"></ul>
+      </div>
+      <div class="nav-icons">
+        <a href="#" class="fav-icon">
+          <i class="far fa-heart"></i> Favourites
+        </a>
+        <a href="#" class="cart-icon"
+          ><i class="fas fa-shopping-cart"></i> <span>Cart</span>
+          <div id="cart" class="cart-dropdown"></div>
+        </a>
+      </div>
+    </nav>
     <div class="container">
-      <nav class="navbar">
-        <div class="logo">e-commerce</div>
-        <div class="search-bar">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="search on the website"
-          />
-          <button><i class="fas fa-search"></i></button>
-          <ul id="search-results" class="dropdown-list"></ul>
-        </div>
-        <div class="nav-icons">
-          <a href="#" class="fav-icon"
-            ><i class="far fa-heart"></i> Favourites</a
-          >
-          <a href="#" class="cart-icon"
-            ><i class="fas fa-shopping-cart"></i> <span>Cart</span>
-            <div id="cart" class="cart-dropdown"></div>
-          </a>
-        </div>
-      </nav>
       <section class="product-slider-container">
-        <h2>Products</h2>
         <div id="productSlider" class="product-slider"></div>
       </section>
       <section class="all-products-container">
+        <h2>Products</h2>
         <div id="productList" class="product-container"></div>
       </section>
+    </div>
+    <div id="notification" style="display: none">
+      Product added successfully
     </div>
     <script src="script.js"></script>
   </body>
