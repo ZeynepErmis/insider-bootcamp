@@ -1,0 +1,65 @@
+Debug Aşamaları 
+
+1.	Stok Kontrolü
+
+•	Hata: if (product.stock <= quantity) yanlış stok kontrolü.
+•	Düzeltme: if (product.stock < quantity) olarak değiştirdim.
+•	Debugger: addItem(productId, quantity) fonksiyonunun başında, product.stockdeğerini kontrol etmek için buraya debugger koydum:
+
+debugger;
+if (product.stock < quantity) { 
+    throw new Error('Yetersiz stok!');
+}
+
+2.	Stok Güncelleme
+
+•	Hata: Stok düşülmüyor, aynı ürünü tekrar eklediğinde yanlış stok gösteriyor.
+•	Düzeltme: product.stock -= quantity ekledim.
+•	Debugger: addItem fonksiyonunda product.stock güncellenirken şu satıra debugger koydum:
+
+product.stock -= quantity;
+debugger;
+
+3.	Miktar Çarpımı
+
+•	Hata: calculateTotal() fonksiyonunda item.price ile item.quantity çarpılmıyordu.
+•	Düzeltme: sum + item.price * item.quantity olarak düzelttim.
+•	Debugger: calculateTotal() fonksiyonunun başına koydum:
+
+debugger;
+this.total = this.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+4.	İndirim Hesaplama
+
+•	Hata: this.total *= 0.1 yanlış hesaplama.
+•	Düzeltme: this.total *= 0.9 olarak değiştirdim.
+•	Debugger / Breakpoint: applyDiscount() fonksiyonunda this.total hesaplanmadan önce koydum:
+
+debugger;
+this.total *= 0.9;
+
+5.	Silme İşlemi
+
+•   Hata: Silinen ürünün stoğu geri eklenmesine rağmen ekranda güncellenmiyordu.
+    Stok güncellemesi ancak başka bir ürünü sepete ekleyince görünüyordu.
+•   Düzeltme: product.stock += item.quantity; eklenerek silinen ürünün stoğa eklenmesi sağladım.
+    removeItem(productId) metoduna stok güncelleme olayını tetikleyen bir event ekledim:
+            removeItem(productId) {
+            window.cart.removeItem(productId);
+            document.dispatchEvent(new Event("stockUpdate"));
+            }
+    Sepet arayüzünde silme işlemini doğru çalıştırmak için onclick="cart.removeItem(...)" yerine onclick="app.removeItem(...)" olarak değiştirdim.
+•	Debugger: removeItem(productId) fonksiyonunda product.stock artırılırken koydum:
+
+product.stock += item.quantity;
+debugger;
+
+6.	UI Güncellenmesi
+
+•	Hata: Toplam fiyat yuvarlanmadan gösteriliyordu.
+•	Düzeltme: totalElement.textContent = \Toplam: ${this.total.toFixed(2)} TL
+•	Debugger updateUI() fonksiyonunda totalElement.textContent güncellenirken koydum:
+
+debugger;
+totalElement.textContent = `Toplam: ${this.total.toFixed(2)} TL`;
+
